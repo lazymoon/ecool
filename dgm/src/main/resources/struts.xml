@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- <constant name="srm.file.mold.eblen.contract" value="e:\srm_file_mold_ebeln_contract\" 
+		/> -->
+	<!-- <constant name="srm.file.repairdata.excel.temp" value="e:\srm_temp\repairdata" 
+		/> -->
+	<!-- <constant name="srm.file.upload.path" value="e:\srm_file_upload\" /> -->
+	<!-- <constant name="srm.file.upload.path.temp" value="e:\srm_file_upload_temp\" 
+		/> -->
+	<!-- <constant name="srm.file.download.temp" value="e:\srm_temp\" /> -->
+	<!-- <constant name="struts.devMode" value="false" /> -->
+	<!-- <constant name="struts.locale" value="zh_CN" /> -->
+	<!-- <constant name="struts.configuration.xml.reload" value="false" /> -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- <constant name="struts.i18n.reload" value="false" /> -->
+	<!-- <constant name="struts.custom.i18n.resources" value="message" /> -->
+	<constant name="struts.action.extension" value="do" />
+	<!-- <constant name="struts.ui.theme" value="simple" /> -->
+	<!-- <constant name="struts.multipart.maxSize" value="10485760"/> -->
+	<!-- <constant name="struts.xwork.chaining.copyErrors" value="false" /> -->
+	<!-- <constant name="struts.xwork.chaining.copyFieldErrors" value="false" 
+		/> -->
+	<!-- <constant name="struts.xwork.chaining.copyMessages" value="false" /> -->
+
+	<!-- struts-spring-plugin configuration -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- <constant name="struts.objectFactory.spring.autoWire" value="type" 
+		/> -->
+	<!-- <constant name="struts.objectFactory.spring.useClassCache" value="false" 
+		/> -->
+	<!-- <constant name="struts.objectFactory.spring.autoWire.alwaysRespect" 
+		value="true" /> -->
+	<constant name="struts.convention.default.parent.package" value="dgm-default" />
+	<constant name="struts.convention.package.locators" value="action" />
+	<constant name="struts.convention.package.locators.basePackage" value="com.dgm.info.srm.action" />
+	<constant name="struts.convention.action.disableScanning" value="false" />
+	<constant name="struts.convention.result.path" value="/" />
+	<constant name="struts.convention.classes.reload" value="false" />
+
+	<package name="dgm-default" extends="struts-default">
+		<interceptors>
+			<interceptor name="authorityInterceptor" class="com.dgm.info.srm.security.interceptors.AuthorityInterceptor" />
+			<interceptor-stack name="dgm-defaultStack">
+				<interceptor-ref name="authorityInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="dgm-defaultStack" />
+
+		<default-action-ref name="./login/showa" />
+
+		<global-results>
+			<result name="login" type="redirectAction">
+				<param name="actionName">showa</param>
+				<param name="namespace">/login</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</global-results>
+	</package>
+</struts>
