@@ -51,7 +51,7 @@ public class TestShiroIni {
 	    //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
 	    Subject subject = SecurityUtils.getSubject();
 //	    UsernamePasswordToken token = new UsernamePasswordToken("zhang", "123");
-    User user = new User("admin","admin",Roles.ADMIN);
+    User user = new User();
     UserToken token = new UserToken(user);
 	    try {
 	        //4、登录，即身份验证

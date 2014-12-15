@@ -11,7 +11,10 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.dgm.info.srm.dao.UserDao;
+import com.dgm.info.srm.entities.Permission;
 import com.dgm.info.srm.entities.User;
 import com.dgm.info.srm.security.shiro.token.UserToken;
 
@@ -21,8 +24,6 @@ import com.dgm.info.srm.security.shiro.token.UserToken;
  */
 public class JDBCRealm extends AuthorizingRealm {
 	
-	
-
 	public JDBCRealm() {
 		setName(this.getClass().getSimpleName());
 		setAuthenticationTokenClass(UserToken.class);
@@ -36,8 +37,9 @@ public class JDBCRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		User user =  (User) arg0.getPrimaryPrincipal();
-		
-		info.addRole(user.getUserType().toString());
+		for(Permission permission: user.getPermissions()){
+			info.addStringPermission(permission.getPermName());
+		}
 		return info;
 	}
 

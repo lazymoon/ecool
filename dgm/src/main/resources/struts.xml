@@ -33,28 +33,30 @@
 		/> -->
 	<!-- <constant name="struts.objectFactory.spring.autoWire.alwaysRespect" 
 		value="true" /> -->
-	<constant name="struts.convention.default.parent.package" value="dgm-default" />
+	<constant name="struts.convention.default.parent.package" value="blog-default" />
 	<constant name="struts.convention.package.locators" value="action" />
 	<constant name="struts.convention.package.locators.basePackage" value="com.dgm.info.srm.action" />
 	<constant name="struts.convention.action.disableScanning" value="false" />
 	<constant name="struts.convention.result.path" value="/" />
 	<constant name="struts.convention.classes.reload" value="false" />
 
-	<package name="dgm-default" extends="struts-default">
+	<package name="blog-default" extends="json-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
 		<interceptors>
 			<interceptor name="authorityInterceptor" class="com.dgm.info.srm.security.interceptors.AuthorityInterceptor" />
-			<interceptor-stack name="dgm-defaultStack">
+			<interceptor-stack name="blog-defaultStack">
+				<interceptor-ref name="json"></interceptor-ref>
 				<interceptor-ref name="authorityInterceptor" />
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="dgm-defaultStack" />
-
-		<default-action-ref name="./login/showa" />
-
+		<default-interceptor-ref name="blog-defaultStack" />
+		<default-action-ref name="./login/show" />
 		<global-results>
 			<result name="login" type="redirectAction">
-				<param name="actionName">showa</param>
+				<param name="actionName">show</param>
 				<param name="namespace">/login</param>
 			</result>
 			<result name="error">/error.jsp</result>

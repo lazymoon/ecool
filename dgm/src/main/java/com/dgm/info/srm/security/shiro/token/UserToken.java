@@ -4,7 +4,6 @@
 package com.dgm.info.srm.security.shiro.token;
 
 import org.apache.shiro.authc.HostAuthenticationToken;
-import org.apache.struts2.ServletActionContext;
 
 import com.dgm.info.srm.entities.User;
 

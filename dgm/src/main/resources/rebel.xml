@@ -2,15 +2,15 @@
 <application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com" xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
 
 	<classpath>
-		<dir name="D:/workspace/dgm/target/classes">
+		<dir name="C:/Users/zhengss/git/ecool/dgm/target/classes">
 		</dir>
-		<dir name="D:/workspace/dgm/target/test-classes">
+		<dir name="C:/Users/zhengss/git/ecool/dgm/target/test-classes">
 		</dir>
 	</classpath>
 
 	<web>
 		<link target="/">
-			<dir name="D:/workspace/dgm/src/main/webapp">
+			<dir name="C:/Users/zhengss/git/ecool/dgm/src/main/webapp">
 			</dir>
 		</link>
 	</web>

@@ -33,9 +33,9 @@ public class AuthorityInterceptor implements Interceptor{
 	public String intercept(ActionInvocation invocation) throws Exception {
 		System.out.println("AuthorityInterceptor.intercept()");
 		System.out.println(SecurityUtils.getSubject().getSession().getTimeout());
-		if(SecurityUtils.getSubject().getPrincipal() == null ){
-			return "login";
-		}
+//		if(SecurityUtils.getSubject().getPrincipal() == null ){
+//			return "login";
+//		}
 		invocation.invoke();
 		return null;
 	}
